@@ -27,15 +27,8 @@ class stone
 			imageMode(CENTER);
 			ellipseMode(RADIUS)
 			image(this.image, 0,0,this.r*2, this.r*2)
-			pop()
-
-			this.body.position.x = mouseX;
-			this.body.position.y = mouseY;
+			pop();
 			
-
-
-
-
 
 	}
 

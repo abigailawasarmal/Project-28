@@ -40,21 +40,14 @@ function setup() {
 
 	treeObj=new tree(1050,580);
 	groundObject=new ground(width/2,600,width,20);
-  
+  launcherObject=new Launcher(stoneObj.body,{x:235,y:420});
  
 
 
 	Engine.run(engine);
 }
 
-function keyPressed(){
 
-if(keyCode === 32){
-  Matter.Body.setPosition(stoneObj.body,{x:235,y:420})
-  launcherObject.attach(stoneObj.body);
-}
-
-}
 
 function draw() {
 
@@ -78,11 +71,11 @@ function draw() {
   mango11.display();
   mango12.display();
 
-  stoneObj.display();
+  //stoneObj.display();
   groundObject.display();
-  launcherObject=new launcher(stoneObj.body,{x:235,y:420});
 
-  launcher.display();
+
+  launcherObject.display();
 
   
   
@@ -104,17 +97,24 @@ function draw() {
 
 function mouseDragged(){
 
-Matter.Body.setPosition(launcher.body,{x:mouseX,y:mouseY});
+Matter.Body.setPosition(stoneObj.body,{x:mouseX,y:mouseY});
 
 }
 
 function mouseReleased(){
 
-launcher.fly();
+  launcherObject.fly();
 
 }
 
+function keyPressed(){
 
+  if(keyCode === 32){
+    Matter.Body.setPosition(stoneObj.body,{x:235,y:420})
+    launcherObject.attach(stoneObj.body);
+  }
+  
+  }
 
 //create keyPressed function here
 

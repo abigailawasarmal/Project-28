@@ -1,29 +1,39 @@
 class Launcher
 {
-	constructor(stone,boy)
+	constructor(boy,stone)
 	{
 		var options={
-                stone:boy,
-                boy:stone,
-                stiffness:0.4,
-                length:10,	
+                bodyA:boy,
+                pointB:stone,
+                stiffness:0.004,
+                length:1,	
 			}
+        this.bodyA=boy
+		this.pointB=stone
         this.launcher = Constraint.create(options);
         World.add(world,this.launcher);
 
     }
-    
+    attach(boy){
+		this.launcher.bodyA=boy;
+	}
+
     fly(){
 
-this.launcher.stone = null;
+this.launcher.bodyA = null;
 
     }
 	display()
 	{
-            var stone = this.launcher.stone.position;
-            var boy = this.launcher.boy.position;
+        if(this.launcher.bodyA)
+		{
+		
+            var pointA = this.bodyA.position;
+            var pointB=this.pointB
+
             strokeWeight(4);
-            line(stone.x,stone.y,boy.x,boy.y);
+            line(pointA.x,pointA.y,pointB.x,pointB.y);
+        }
 			
 	}
 
